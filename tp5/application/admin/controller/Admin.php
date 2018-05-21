@@ -16,7 +16,15 @@ class Admin extends Controller
              [
                'username'=>input('username'),
                'password'=>md5(input('password')),
+               'password'=>input('password'),
              ];
+             $validate= \think\Loader::validate('Admin');
+            if(!$validate->scene('add')->check($data))
+            {
+                $this->error($validate->getError());
+                die;
+            };
+                
              if(db('admin')->insert($data)){
              	return $this->success('添加管理员成功','lst');
              }
