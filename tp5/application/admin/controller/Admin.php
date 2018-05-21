@@ -15,7 +15,6 @@ class Admin extends Controller
              $data=
              [
                'username'=>input('username'),
-               'password'=>md5(input('password')),
                'password'=>input('password'),
              ];
              $validate= \think\Loader::validate('Admin');
